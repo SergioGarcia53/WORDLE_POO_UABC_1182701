@@ -73,9 +73,13 @@ public class palabraIntento {
      return letrasAEliminar.get(i);
     }
    
-    
     public int getSizeLetrasEliminar()
     {
         return letrasAEliminar.size();
+    }
+    
+      public void dibujarPalabraIntento(Canvas canva)
+    {
+        
     }
 }

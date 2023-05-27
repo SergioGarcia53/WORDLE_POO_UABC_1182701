@@ -3,7 +3,7 @@ package wordle_poo_1182701;
 
 public class palabraObjetivo {
   private  String palabraObjetivo;
-
+  
     public String getPalabraObjetivo() {
         return palabraObjetivo;
     }
@@ -20,6 +20,8 @@ public class palabraObjetivo {
     public String toString() {
         return palabraObjetivo;
     }
+    
+  
   
   
 }

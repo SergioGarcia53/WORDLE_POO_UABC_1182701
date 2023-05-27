@@ -1,13 +1,17 @@
 
 package wordle_poo_1182701;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 public class Tablero {
    private int x;
    private Teclado teclado=new Teclado();
    private ArrayList<String> letrasAEliminar=new ArrayList<String>();
+   private ArrayList<Tecla> tableroGrafico=new ArrayList<Tecla>();
            
     public int getX() {
         return x;
@@ -51,6 +55,23 @@ public class Tablero {
         letrasAEliminar.add(letra);
     }
     
-    
-    
+    public void dibujarTableroGrafico(Canvas canva)
+    {
+        int y=200;
+       for(int i=0;i<=5;i++)
+        {
+            for(int j=0;j<=4;j++)
+            {
+                int x=250+(j*60);
+                Tecla cuadro=new Tecla(x,y,"");
+                cuadro.dibujarTecla( canva);
+            }
+            y=y+60;
+        } 
+    }
+     public void dibujarTecladoGrafico(Canvas canva)
+     {
+         teclado.dibujarTecladoGrafico(canva);
+         
+     }
 }
