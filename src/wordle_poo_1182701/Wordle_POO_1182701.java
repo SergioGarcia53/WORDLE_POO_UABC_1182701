@@ -23,20 +23,25 @@ public class Wordle_POO_1182701 {
      int n;
      palabraIntento Intentos=new palabraIntento();
      String intento;
-     int numIntentos=6,ganar=0;
+     int numIntentos=6,ganar=0,numintento=1;
      
       n=rmd.nextInt(diccionario.getSize());
       Objetivo.setPalabraObjetivo(diccionario.getPalabra(n));
-      canva.drawString(Objetivo.getPalabraObjetivo(), 50, 50);
+     
       
         do{           
          tablero.desplegarTablero(numIntentos);
          
             System.out.println("\n");
          tablero.desplegarTeclado();
-         
+         if(numIntentos==6)
+         {
          tablero.dibujarTableroGrafico(canva);
+         }
          tablero.dibujarTecladoGrafico(canva);
+         
+         
+         
          do{
          System.out.println("Ingresa intento: ");
          intento=teclado.nextLine();
@@ -45,12 +50,15 @@ public class Wordle_POO_1182701 {
              System.out.println("PALABRA INVALIDA, INTENTE DE NUEVO");  
          }
          }while(intento.length()!=5);
+         
+         
+         
          Intentos.agregarPalabra(intento);
          Intentos.getResultado(intento, Objetivo.getPalabraObjetivo());
          
          Intentos.imprimirIntento();
-         Intentos.dibujarPalabraIntento(canva);
-         
+         Intentos.dibujarPalabraIntento(canva,numintento,intento,tablero.getTeclado());
+         numintento++;
          if(intento.equals(Objetivo.getPalabraObjetivo()))
          {
             ganar=1; 
@@ -65,16 +73,29 @@ public class Wordle_POO_1182701 {
          for(int c=0;c<Intentos.getSizeLetrasEliminar();c++)
          {
          tablero.agregarLetraAEliminar(Intentos.getLetraAEliminar(c));
+         
          tablero.eliminarLetras();
          }
          
         }while((numIntentos!=0) && (ganar!=1));
          if(ganar==1)
          {
+             Font ganaste = new Font("Arial", Font.BOLD, 100);
+             canva.setForegroundColor(Color.green);
+        canva.setFont(ganaste);
+        canva.drawString("GANASTE!!!!!", 200, 370);
+        canva.drawString("GANASTE!!!!!", 200, 470);
+        canva.drawString("GANASTE!!!!!", 200, 570);
              System.out.println("\n\nHAS GANADO FELICIDADES!!!!!!"); 
          }
          else
          {
+              Font perdiste = new Font("Arial", Font.BOLD, 100);
+             canva.setForegroundColor(Color.red);
+        canva.setFont(perdiste);
+        canva.drawString("PERDISTE :(", 200, 370);
+        canva.drawString("PERDISTE :(", 200, 470);
+        canva.drawString("PERDISTE :(", 200, 570);
              System.out.println("\n\nLA PALABRA ERA: "+Objetivo.getPalabraObjetivo());
              System.out.println("HAS PERDIDO, MEJOR SUERTE A LA PROXIMA");
          }

@@ -7,6 +7,8 @@ public class palabraIntento {
    private  ArrayList<String> palabraIntento=new ArrayList<String>(); 
    private  ArrayList<String> resultados=new ArrayList<String>();  
     private ArrayList<String> letrasAEliminar=new ArrayList<String>();
+    private ArrayList<Tecla> intentoGrafico=new ArrayList<Tecla>();
+    private Teclado teclasResultado=new Teclado();
   private String result;
     public palabraIntento() {
         
@@ -47,12 +49,14 @@ public class palabraIntento {
             
             if(intento.charAt(i)==objetivo.charAt(j)) 
              {
-             result="!";              
+                result="!"; 
+               
              }    
             
                 if(intento.charAt(i)==objetivo.charAt(i)) 
                 {
                 result="=";
+      
                 } 
                 if((intento.charAt(i)!=objetivo.charAt(0))&&(intento.charAt(i)!=objetivo.charAt(1))&&(intento.charAt(i)!=objetivo.charAt(2))&&(intento.charAt(i)!=objetivo.charAt(3))&&(intento.charAt(i)!=objetivo.charAt(4)))
                 {
@@ -60,6 +64,7 @@ public class palabraIntento {
                  String letra;
                  letra=Character.toString(intento.charAt(i));
                  letrasAEliminar.add(letra);
+                 
                 }  
        }   
                  resultados.add(result);
@@ -78,8 +83,57 @@ public class palabraIntento {
         return letrasAEliminar.size();
     }
     
-      public void dibujarPalabraIntento(Canvas canva)
+      public void dibujarPalabraIntento(Canvas canva, int numintento,String intento,Teclado teclado)
     {
-        
-    }
+        for (int i = 0; i < intento.length(); i++) 
+        {
+            int x=60;
+            String letra;
+            char letra1;
+            letra1=intento.charAt(i);
+            letra=Character.toString(letra1);
+         Tecla teclaIntento=new Tecla(190+x+(i*60),140+(numintento*60),letra); 
+         
+            if(resultados.get(i)=="!")
+            {
+                teclaIntento.setEstado(2);
+                 teclado.actualizarTecladoGrafico(letra,2);
+                 
+            }
+            if(resultados.get(i)=="=")
+            {
+                teclaIntento.setEstado(1);
+                 teclado.actualizarTecladoGrafico(letra,1);
+                 
+            }
+            if(resultados.get(i)=="X")
+            {
+                teclaIntento.setEstado(3);
+                 teclado.actualizarTecladoGrafico(letra,3);
+                 
+            }
+            if(numintento>1)
+            {
+                if(resultados.get(i+((numintento-1)*5))=="!")
+                {
+                    teclaIntento.setEstado(2);
+                    teclado.actualizarTecladoGrafico(letra,2);
+                }
+                if(resultados.get(i+((numintento-1)*5))=="=")
+                {
+                    teclaIntento.setEstado(1);
+                    teclado.actualizarTecladoGrafico(letra,1);
+                }
+                if(resultados.get(i+((numintento-1)*5))=="X")
+                {
+                    teclaIntento.setEstado(3);
+                    teclado.actualizarTecladoGrafico(letra,3);
+                } 
+            }
+          teclaIntento.dibujarTecla(canva);  
+         }
+         
+        }
+       
+    
 }

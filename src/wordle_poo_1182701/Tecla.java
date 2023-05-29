@@ -51,5 +51,10 @@ public class Tecla extends JFrame  {
     {
         this.estado=estado;
     }
+    
+    public String getLetra()
+    {
+        return letra;
+    }
 
 }

@@ -47,7 +47,10 @@ public class Tablero {
         for(int i=0;i<letrasAEliminar.size();i++)
         {
           teclado.eliminarLetrasteclado(letrasAEliminar.get(i));
+          
+          
         }
+        
     }
     
     public void agregarLetraAEliminar(String letra)
@@ -73,5 +76,10 @@ public class Tablero {
      {
          teclado.dibujarTecladoGrafico(canva);
          
+     }
+     
+     public Teclado getTeclado()
+     {
+         return teclado;
      }
 }

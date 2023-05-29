@@ -103,6 +103,7 @@ public void eliminarLetrasteclado(String letra)
     {
      linea3.remove(linea3.indexOf(letra));
     }
+    
 }
 
 public void dibujarTecladoGrafico(Canvas canva)
@@ -123,6 +124,31 @@ public void dibujarTecladoGrafico(Canvas canva)
            
     }
 
+}
+
+public void actualizarTecladoGrafico(String letra,int estado)
+{
+   for(int i=0;i<lineaGrafica1.size();i++)
+    {
+       if(lineaGrafica1.get(i).getLetra().equals(letra))
+       {
+           lineaGrafica1.get(i).setEstado(estado);
+       }
+    } 
+   for(int i=0;i<lineaGrafica2.size();i++)
+    {
+       if(lineaGrafica2.get(i).getLetra().equals(letra))
+       {
+           lineaGrafica2.get(i).setEstado(estado);
+       } 
+    }
+   for(int i=0;i<lineaGrafica3.size();i++)
+    {
+       if(lineaGrafica3.get(i).getLetra().equals(letra))
+       {
+           lineaGrafica3.get(i).setEstado(estado);
+       } 
+    }
 }
 
 }
